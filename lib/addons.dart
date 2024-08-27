@@ -172,6 +172,15 @@ class ColorFilterAddons {
     ];
   }
 
+  /// Temperature adjustment
+  static List<double> temperature(double value) {
+    // O valor positivo de "value" torna a imagem mais quente, e o valor negativo torna a imagem mais fria.
+    double r = value > 0 ? value * 0.1 : 0;
+    double b = value < 0 ? value.abs() * 0.1 : 0;
+
+    return [1 + r, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 + b, 0, 0, 0, 0, 0, 1, 0];
+  }
+
   /// Brightness adjustment
   static List<double> brightness(double value) {
     if (value <= 0) {
